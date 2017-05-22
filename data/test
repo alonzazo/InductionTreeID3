@@ -1,0 +1,1191 @@
+% 
+%                 Introduction
+%                 ============
+% 
+% In my work on context-sensitive learning, I used the "Deterding Vowel
+% Recognition Data", but I found it necessary to reformulate the data.
+% Implicit in the original data is contextual information on the
+% speaker's gender and identity. For my work, it was necessary to make
+% this information explicit. The file "vowel-context.data" adds the
+% speaker's sex and identity as new features. The format of the data file
+% is described below.
+% 
+% 
+% Peter Turney
+% peter@ai.iit.nrc.ca
+% 
+% 
+% 
+%                 References
+%                 ==========
+% 
+% P. Turney. "Robust Classification With Context-Sensitive Features."
+% Proceedings of the Sixth International Conference on Industrial
+% and Engineering Applications of Artificial Intelligence and Expert
+% Systems (IEA/AIE-93): 268-276. 1993.
+% 
+% URL: ftp://ai.iit.nrc.ca/pub/ksl-papers/NRC-35074.ps.Z
+% 
+% 
+% P. Turney. "Exploiting Context When Learning to Classify."
+% Proceedings of the European Conference on Machine Learning
+% (ECML-93): 402-407. 1993.
+% 
+% URL: ftp://ai.iit.nrc.ca/pub/ksl-papers/NRC-35058.ps.Z
+% 
+% 
+% 
+%                 File Structure
+%                 ==============
+% 
+% 
+%         Column          Description
+%         -------------------------------
+%         0               Train or Test
+%         1               Speaker Number
+%         2               Sex
+%         3               Feature 0
+%         4               Feature 1
+%         5               Feature 2
+%         6               Feature 3
+%         7               Feature 4
+%         8               Feature 5
+%         9               Feature 6
+%         10              Feature 7
+%         11              Feature 8
+%         12              Feature 9
+%         13              Class
+% 
+% 
+% 
+% 
+%                 Numerical Codes
+%                 ===============
+% 
+% 
+%         Speaker         Code Number
+%         ---------------------------
+%         Andrew          0
+%         Bill            1
+%         David           2
+%         Mark            3
+%         Jo              4
+%         Kate            5
+%         Penny           6
+%         Rose            7
+%         Mike            8
+%         Nick            9
+%         Rich            10
+%         Tim             11
+%         Sarah           12
+%         Sue             13
+%         Wendy           14
+% 
+% 
+% 
+%         Set             Number
+%         ---------------------------
+%         Train           0
+%         Test            1
+% 
+% 
+% 
+%         Sex             Number
+%         ---------------------------
+%         Male            0
+%         Female          1
+% 
+% 
+% 
+%         Class           Number
+%         ---------------------------
+%         hid             0
+%         hId             1
+%         hEd             2
+%         hAd             3
+%         hYd             4
+%         had             5
+%         hOd             6
+%         hod             7
+%         hUd             8
+%         hud             9
+%         hed             10
+% 
+% 
+% 
+% 
+% 
+%         Speaker         Code Number     Sex             Train/Test
+%         ---------------------------------------------------------------
+%         Andrew          0               0               0
+%         Bill            1               0               0
+%         David           2               0               0
+%         Mark            3               0               0
+%         Jo              4               1               0
+%         Kate            5               1               0
+%         Penny           6               1               0
+%         Rose            7               1               0
+%         Mike            8               0               1
+%         Nick            9               0               1
+%         Rich            10              0               1
+%         Tim             11              0               1
+%         Sarah           12              1               1
+%         Sue             13              1               1
+%         Wendy           14              1               1
+% 
+% 
+% Num Instances:  990
+% Num Attributes: 14
+% Num missing:    0 /  0.0%
+%
+%     name                      type enum ints real     missing    distinct  (1)
+%   1 'Train or Test'           Enum 100%   0%   0%     0 /  0%     2 /  0%   0% 
+%   2 'Speaker Number'          Enum   0% 100%   0%     0 /  0%    15 /  2%   0% 
+%   3 'Sex'                     Enum   0% 100%   0%     0 /  0%     2 /  0%   0% 
+%   4 'Feature 0'               Real   0%   0% 100%     0 /  0%   853 / 86%  74% 
+%   5 'Feature 1'               Real   0%   0% 100%     0 /  0%   877 / 89%  78% 
+%   6 'Feature 2'               Real   0%   0% 100%     0 /  0%   815 / 82%  67% 
+%   7 'Feature 3'               Real   0%   0% 100%     0 /  0%   836 / 84%  71% 
+%   8 'Feature 4'               Real   0%   0% 100%     0 /  0%   803 / 81%  66% 
+%   9 'Feature 5'               Real   0%   0% 100%     0 /  0%   798 / 81%  64% 
+%  10 'Feature 6'               Real   0%   0% 100%     0 /  0%   748 / 76%  57% 
+%  11 'Feature 7'               Real   0%   0% 100%     0 /  0%   794 / 80%  64% 
+%  12 'Feature 8'               Real   0%   0% 100%     0 /  0%   788 / 80%  63% 
+%  13 'Feature 9'               Real   0%   0% 100%     0 /  0%   775 / 78%  60% 
+%  14 'Class'                   Enum   0% 100%   0%     0 /  0%    11 /  1%   0% 
+%
+%
+%
+%
+% Relabeled values in attribute 'Speaker Number'
+%    From: 0                       To: Andrew              
+%    From: 1                       To: Bill                
+%    From: 2                       To: David               
+%    From: 3                       To: Mark                
+%    From: 4                       To: Jo                  
+%    From: 5                       To: Kate                
+%    From: 6                       To: Penny               
+%    From: 7                       To: Rose                
+%    From: 8                       To: Mike                
+%    From: 9                       To: Nick                
+%    From: 10                      To: Rich                
+%    From: 11                      To: Tim                 
+%    From: 12                      To: Sarah               
+%    From: 13                      To: Sue                 
+%    From: 14                      To: Wendy               
+%
+%
+% Relabeled values in attribute 'Sex'
+%    From: 0                       To: Male                
+%    From: 1                       To: Female              
+%
+%
+% Relabeled values in attribute 'Class'
+%    From: 0                       To: hid                 
+%    From: 1                       To: hId                 
+%    From: 2                       To: hEd                 
+%    From: 3                       To: hAd                 
+%    From: 4                       To: hYd                 
+%    From: 5                       To: had                 
+%    From: 6                       To: hOd                 
+%    From: 7                       To: hod                 
+%    From: 8                       To: hUd                 
+%    From: 9                       To: hud                 
+%    From: 10                      To: hed                 
+%
+@relation vowel
+@attribute 'Train or Test' { Train, Test}
+@attribute 'Speaker Number' { Andrew, Bill, David, Mark, Jo, Kate, Penny, Rose, Mike, Nick, Rich, Tim, Sarah, Sue, Wendy}
+@attribute 'Sex' { Male, Female}
+@attribute 'Class' { hid, hId, hEd, hAd, hYd, had, hOd, hod, hUd, hud, hed}
+@data
+Train,Andrew,Male,hid
+Train,Andrew,Male,hId
+Train,Andrew,Male,hEd
+Train,Andrew,Male,hAd
+Train,Andrew,Male,hYd
+Train,Andrew,Male,had
+Train,Andrew,Male,hOd
+Train,Andrew,Male,hod
+Train,Andrew,Male,hUd
+Train,Andrew,Male,hud
+Train,Andrew,Male,hed
+Train,Andrew,Male,hid
+Train,Andrew,Male,hId
+Train,Andrew,Male,hEd
+Train,Andrew,Male,hAd
+Train,Andrew,Male,hYd
+Train,Andrew,Male,had
+Train,Andrew,Male,hOd
+Train,Andrew,Male,hod
+Train,Andrew,Male,hUd
+Train,Andrew,Male,hud
+Train,Andrew,Male,hed
+Train,Andrew,Male,hid
+Train,Andrew,Male,hId
+Train,Andrew,Male,hEd
+Train,Andrew,Male,hAd
+Train,Andrew,Male,hYd
+Train,Andrew,Male,had
+Train,Andrew,Male,hOd
+Train,Andrew,Male,hod
+Train,Andrew,Male,hUd
+Train,Andrew,Male,hud
+Train,Andrew,Male,hed
+Train,Andrew,Male,hid
+Train,Andrew,Male,hId
+Train,Andrew,Male,hEd
+Train,Andrew,Male,hAd
+Train,Andrew,Male,hYd
+Train,Andrew,Male,had
+Train,Andrew,Male,hOd
+Train,Andrew,Male,hod
+Train,Andrew,Male,hUd
+Train,Andrew,Male,hud
+Train,Andrew,Male,hed
+Train,Andrew,Male,hid
+Train,Andrew,Male,hId
+Train,Andrew,Male,hEd
+Train,Andrew,Male,hAd
+Train,Andrew,Male,hYd
+Train,Andrew,Male,had
+Train,Andrew,Male,hOd
+Train,Andrew,Male,hod
+Train,Andrew,Male,hUd
+Train,Andrew,Male,hud
+Train,Andrew,Male,hed
+Train,Andrew,Male,hid
+Train,Andrew,Male,hId
+Train,Andrew,Male,hEd
+Train,Andrew,Male,hAd
+Train,Andrew,Male,hYd
+Train,Andrew,Male,had
+Train,Andrew,Male,hOd
+Train,Andrew,Male,hod
+Train,Andrew,Male,hUd
+Train,Andrew,Male,hud
+Train,Andrew,Male,hed
+Train,Bill,Male,hid
+Train,Bill,Male,hId
+Train,Bill,Male,hEd
+Train,Bill,Male,hAd
+Train,Bill,Male,hYd
+Train,Bill,Male,had
+Train,Bill,Male,hOd
+Train,Bill,Male,hod
+Train,Bill,Male,hUd
+Train,Bill,Male,hud
+Train,Bill,Male,hed
+Train,Bill,Male,hid
+Train,Bill,Male,hId
+Train,Bill,Male,hEd
+Train,Bill,Male,hAd
+Train,Bill,Male,hYd
+Train,Bill,Male,had
+Train,Bill,Male,hOd
+Train,Bill,Male,hod
+Train,Bill,Male,hUd
+Train,Bill,Male,hud
+Train,Bill,Male,hed
+Train,Bill,Male,hid
+Train,Bill,Male,hId
+Train,Bill,Male,hEd
+Train,Bill,Male,hAd
+Train,Bill,Male,hYd
+Train,Bill,Male,had
+Train,Bill,Male,hOd
+Train,Bill,Male,hod
+Train,Bill,Male,hUd
+Train,Bill,Male,hud
+Train,Bill,Male,hed
+Train,Bill,Male,hid
+Train,Bill,Male,hId
+Train,Bill,Male,hEd
+Train,Bill,Male,hAd
+Train,Bill,Male,hYd
+Train,Bill,Male,had
+Train,Bill,Male,hOd
+Train,Bill,Male,hod
+Train,Bill,Male,hUd
+Train,Bill,Male,hud
+Train,Bill,Male,hed
+Train,Bill,Male,hid
+Train,Bill,Male,hId
+Train,Bill,Male,hEd
+Train,Bill,Male,hAd
+Train,Bill,Male,hYd
+Train,Bill,Male,had
+Train,Bill,Male,hOd
+Train,Bill,Male,hod
+Train,Bill,Male,hUd
+Train,Bill,Male,hud
+Train,Bill,Male,hed
+Train,Bill,Male,hid
+Train,Bill,Male,hId
+Train,Bill,Male,hEd
+Train,Bill,Male,hAd
+Train,Bill,Male,hYd
+Train,Bill,Male,had
+Train,Bill,Male,hOd
+Train,Bill,Male,hod
+Train,Bill,Male,hUd
+Train,Bill,Male,hud
+Train,Bill,Male,hed
+Train,David,Male,hid
+Train,David,Male,hId
+Train,David,Male,hEd
+Train,David,Male,hAd
+Train,David,Male,hYd
+Train,David,Male,had
+Train,David,Male,hOd
+Train,David,Male,hod
+Train,David,Male,hUd
+Train,David,Male,hud
+Train,David,Male,hed
+Train,David,Male,hid
+Train,David,Male,hId
+Train,David,Male,hEd
+Train,David,Male,hAd
+Train,David,Male,hYd
+Train,David,Male,had
+Train,David,Male,hOd
+Train,David,Male,hod
+Train,David,Male,hUd
+Train,David,Male,hud
+Train,David,Male,hed
+Train,David,Male,hid
+Train,David,Male,hId
+Train,David,Male,hEd
+Train,David,Male,hAd
+Train,David,Male,hYd
+Train,David,Male,had
+Train,David,Male,hOd
+Train,David,Male,hod
+Train,David,Male,hUd
+Train,David,Male,hud
+Train,David,Male,hed
+Train,David,Male,hid
+Train,David,Male,hId
+Train,David,Male,hEd
+Train,David,Male,hAd
+Train,David,Male,hYd
+Train,David,Male,had
+Train,David,Male,hOd
+Train,David,Male,hod
+Train,David,Male,hUd
+Train,David,Male,hud
+Train,David,Male,hed
+Train,David,Male,hid
+Train,David,Male,hId
+Train,David,Male,hEd
+Train,David,Male,hAd
+Train,David,Male,hYd
+Train,David,Male,had
+Train,David,Male,hOd
+Train,David,Male,hod
+Train,David,Male,hUd
+Train,David,Male,hud
+Train,David,Male,hed
+Train,David,Male,hid
+Train,David,Male,hId
+Train,David,Male,hEd
+Train,David,Male,hAd
+Train,David,Male,hYd
+Train,David,Male,had
+Train,David,Male,hOd
+Train,David,Male,hod
+Train,David,Male,hUd
+Train,David,Male,hud
+Train,David,Male,hed
+Train,Mark,Male,hid
+Train,Mark,Male,hId
+Train,Mark,Male,hEd
+Train,Mark,Male,hAd
+Train,Mark,Male,hYd
+Train,Mark,Male,had
+Train,Mark,Male,hOd
+Train,Mark,Male,hod
+Train,Mark,Male,hUd
+Train,Mark,Male,hud
+Train,Mark,Male,hed
+Train,Mark,Male,hid
+Train,Mark,Male,hId
+Train,Mark,Male,hEd
+Train,Mark,Male,hAd
+Train,Mark,Male,hYd
+Train,Mark,Male,had
+Train,Mark,Male,hOd
+Train,Mark,Male,hod
+Train,Mark,Male,hUd
+Train,Mark,Male,hud
+Train,Mark,Male,hed
+Train,Mark,Male,hid
+Train,Mark,Male,hId
+Train,Mark,Male,hEd
+Train,Mark,Male,hAd
+Train,Mark,Male,hYd
+Train,Mark,Male,had
+Train,Mark,Male,hOd
+Train,Mark,Male,hod
+Train,Mark,Male,hUd
+Train,Mark,Male,hud
+Train,Mark,Male,hed
+Train,Mark,Male,hid
+Train,Mark,Male,hId
+Train,Mark,Male,hEd
+Train,Mark,Male,hAd
+Train,Mark,Male,hYd
+Train,Mark,Male,had
+Train,Mark,Male,hOd
+Train,Mark,Male,hod
+Train,Mark,Male,hUd
+Train,Mark,Male,hud
+Train,Mark,Male,hed
+Train,Mark,Male,hid
+Train,Mark,Male,hId
+Train,Mark,Male,hEd
+Train,Mark,Male,hAd
+Train,Mark,Male,hYd
+Train,Mark,Male,had
+Train,Mark,Male,hOd
+Train,Mark,Male,hod
+Train,Mark,Male,hUd
+Train,Mark,Male,hud
+Train,Mark,Male,hed
+Train,Mark,Male,hid
+Train,Mark,Male,hId
+Train,Mark,Male,hEd
+Train,Mark,Male,hAd
+Train,Mark,Male,hYd
+Train,Mark,Male,had
+Train,Mark,Male,hOd
+Train,Mark,Male,hod
+Train,Mark,Male,hUd
+Train,Mark,Male,hud
+Train,Mark,Male,hed
+Train,Jo,Female,hid
+Train,Jo,Female,hId
+Train,Jo,Female,hEd
+Train,Jo,Female,hAd
+Train,Jo,Female,hYd
+Train,Jo,Female,had
+Train,Jo,Female,hOd
+Train,Jo,Female,hod
+Train,Jo,Female,hUd
+Train,Jo,Female,hud
+Train,Jo,Female,hed
+Train,Jo,Female,hid
+Train,Jo,Female,hId
+Train,Jo,Female,hEd
+Train,Jo,Female,hAd
+Train,Jo,Female,hYd
+Train,Jo,Female,had
+Train,Jo,Female,hOd
+Train,Jo,Female,hod
+Train,Jo,Female,hUd
+Train,Jo,Female,hud
+Train,Jo,Female,hed
+Train,Jo,Female,hid
+Train,Jo,Female,hId
+Train,Jo,Female,hEd
+Train,Jo,Female,hAd
+Train,Jo,Female,hYd
+Train,Jo,Female,had
+Train,Jo,Female,hOd
+Train,Jo,Female,hod
+Train,Jo,Female,hUd
+Train,Jo,Female,hud
+Train,Jo,Female,hed
+Train,Jo,Female,hid
+Train,Jo,Female,hId
+Train,Jo,Female,hEd
+Train,Jo,Female,hAd
+Train,Jo,Female,hYd
+Train,Jo,Female,had
+Train,Jo,Female,hOd
+Train,Jo,Female,hod
+Train,Jo,Female,hUd
+Train,Jo,Female,hud
+Train,Jo,Female,hed
+Train,Jo,Female,hid
+Train,Jo,Female,hId
+Train,Jo,Female,hEd
+Train,Jo,Female,hAd
+Train,Jo,Female,hYd
+Train,Jo,Female,had
+Train,Jo,Female,hOd
+Train,Jo,Female,hod
+Train,Jo,Female,hUd
+Train,Jo,Female,hud
+Train,Jo,Female,hed
+Train,Jo,Female,hid
+Train,Jo,Female,hId
+Train,Jo,Female,hEd
+Train,Jo,Female,hAd
+Train,Jo,Female,hYd
+Train,Jo,Female,had
+Train,Jo,Female,hOd
+Train,Jo,Female,hod
+Train,Jo,Female,hUd
+Train,Jo,Female,hud
+Train,Jo,Female,hed
+Train,Kate,Female,hid
+Train,Kate,Female,hId
+Train,Kate,Female,hEd
+Train,Kate,Female,hAd
+Train,Kate,Female,hYd
+Train,Kate,Female,had
+Train,Kate,Female,hOd
+Train,Kate,Female,hod
+Train,Kate,Female,hUd
+Train,Kate,Female,hud
+Train,Kate,Female,hed
+Train,Kate,Female,hid
+Train,Kate,Female,hId
+Train,Kate,Female,hEd
+Train,Kate,Female,hAd
+Train,Kate,Female,hYd
+Train,Kate,Female,had
+Train,Kate,Female,hOd
+Train,Kate,Female,hod
+Train,Kate,Female,hUd
+Train,Kate,Female,hud
+Train,Kate,Female,hed
+Train,Kate,Female,hid
+Train,Kate,Female,hId
+Train,Kate,Female,hEd
+Train,Kate,Female,hAd
+Train,Kate,Female,hYd
+Train,Kate,Female,had
+Train,Kate,Female,hOd
+Train,Kate,Female,hod
+Train,Kate,Female,hUd
+Train,Kate,Female,hud
+Train,Kate,Female,hed
+Train,Kate,Female,hid
+Train,Kate,Female,hId
+Train,Kate,Female,hEd
+Train,Kate,Female,hAd
+Train,Kate,Female,hYd
+Train,Kate,Female,had
+Train,Kate,Female,hOd
+Train,Kate,Female,hod
+Train,Kate,Female,hUd
+Train,Kate,Female,hud
+Train,Kate,Female,hed
+Train,Kate,Female,hid
+Train,Kate,Female,hId
+Train,Kate,Female,hEd
+Train,Kate,Female,hAd
+Train,Kate,Female,hYd
+Train,Kate,Female,had
+Train,Kate,Female,hOd
+Train,Kate,Female,hod
+Train,Kate,Female,hUd
+Train,Kate,Female,hud
+Train,Kate,Female,hed
+Train,Kate,Female,hid
+Train,Kate,Female,hId
+Train,Kate,Female,hEd
+Train,Kate,Female,hAd
+Train,Kate,Female,hYd
+Train,Kate,Female,had
+Train,Kate,Female,hOd
+Train,Kate,Female,hod
+Train,Kate,Female,hUd
+Train,Kate,Female,hud
+Train,Kate,Female,hed
+Train,Penny,Female,hid
+Train,Penny,Female,hId
+Train,Penny,Female,hEd
+Train,Penny,Female,hAd
+Train,Penny,Female,hYd
+Train,Penny,Female,had
+Train,Penny,Female,hOd
+Train,Penny,Female,hod
+Train,Penny,Female,hUd
+Train,Penny,Female,hud
+Train,Penny,Female,hed
+Train,Penny,Female,hid
+Train,Penny,Female,hId
+Train,Penny,Female,hEd
+Train,Penny,Female,hAd
+Train,Penny,Female,hYd
+Train,Penny,Female,had
+Train,Penny,Female,hOd
+Train,Penny,Female,hod
+Train,Penny,Female,hUd
+Train,Penny,Female,hud
+Train,Penny,Female,hed
+Train,Penny,Female,hid
+Train,Penny,Female,hId
+Train,Penny,Female,hEd
+Train,Penny,Female,hAd
+Train,Penny,Female,hYd
+Train,Penny,Female,had
+Train,Penny,Female,hOd
+Train,Penny,Female,hod
+Train,Penny,Female,hUd
+Train,Penny,Female,hud
+Train,Penny,Female,hed
+Train,Penny,Female,hid
+Train,Penny,Female,hId
+Train,Penny,Female,hEd
+Train,Penny,Female,hAd
+Train,Penny,Female,hYd
+Train,Penny,Female,had
+Train,Penny,Female,hOd
+Train,Penny,Female,hod
+Train,Penny,Female,hUd
+Train,Penny,Female,hud
+Train,Penny,Female,hed
+Train,Penny,Female,hid
+Train,Penny,Female,hId
+Train,Penny,Female,hEd
+Train,Penny,Female,hAd
+Train,Penny,Female,hYd
+Train,Penny,Female,had
+Train,Penny,Female,hOd
+Train,Penny,Female,hod
+Train,Penny,Female,hUd
+Train,Penny,Female,hud
+Train,Penny,Female,hed
+Train,Penny,Female,hid
+Train,Penny,Female,hId
+Train,Penny,Female,hEd
+Train,Penny,Female,hAd
+Train,Penny,Female,hYd
+Train,Penny,Female,had
+Train,Penny,Female,hOd
+Train,Penny,Female,hod
+Train,Penny,Female,hUd
+Train,Penny,Female,hud
+Train,Penny,Female,hed
+Train,Rose,Female,hid
+Train,Rose,Female,hId
+Train,Rose,Female,hEd
+Train,Rose,Female,hAd
+Train,Rose,Female,hYd
+Train,Rose,Female,had
+Train,Rose,Female,hOd
+Train,Rose,Female,hod
+Train,Rose,Female,hUd
+Train,Rose,Female,hud
+Train,Rose,Female,hed
+Train,Rose,Female,hid
+Train,Rose,Female,hId
+Train,Rose,Female,hEd
+Train,Rose,Female,hAd
+Train,Rose,Female,hYd
+Train,Rose,Female,had
+Train,Rose,Female,hOd
+Train,Rose,Female,hod
+Train,Rose,Female,hUd
+Train,Rose,Female,hud
+Train,Rose,Female,hed
+Train,Rose,Female,hid
+Train,Rose,Female,hId
+Train,Rose,Female,hEd
+Train,Rose,Female,hAd
+Train,Rose,Female,hYd
+Train,Rose,Female,had
+Train,Rose,Female,hOd
+Train,Rose,Female,hod
+Train,Rose,Female,hUd
+Train,Rose,Female,hud
+Train,Rose,Female,hed
+Train,Rose,Female,hid
+Train,Rose,Female,hId
+Train,Rose,Female,hEd
+Train,Rose,Female,hAd
+Train,Rose,Female,hYd
+Train,Rose,Female,had
+Train,Rose,Female,hOd
+Train,Rose,Female,hod
+Train,Rose,Female,hUd
+Train,Rose,Female,hud
+Train,Rose,Female,hed
+Train,Rose,Female,hid
+Train,Rose,Female,hId
+Train,Rose,Female,hEd
+Train,Rose,Female,hAd
+Train,Rose,Female,hYd
+Train,Rose,Female,had
+Train,Rose,Female,hOd
+Train,Rose,Female,hod
+Train,Rose,Female,hUd
+Train,Rose,Female,hud
+Train,Rose,Female,hed
+Train,Rose,Female,hid
+Train,Rose,Female,hId
+Train,Rose,Female,hEd
+Train,Rose,Female,hAd
+Train,Rose,Female,hYd
+Train,Rose,Female,had
+Train,Rose,Female,hOd
+Train,Rose,Female,hod
+Train,Rose,Female,hUd
+Train,Rose,Female,hud
+Train,Rose,Female,hed
+Test,Mike,Male,hid
+Test,Mike,Male,hId
+Test,Mike,Male,hEd
+Test,Mike,Male,hAd
+Test,Mike,Male,hYd
+Test,Mike,Male,had
+Test,Mike,Male,hOd
+Test,Mike,Male,hod
+Test,Mike,Male,hUd
+Test,Mike,Male,hud
+Test,Mike,Male,hed
+Test,Mike,Male,hid
+Test,Mike,Male,hId
+Test,Mike,Male,hEd
+Test,Mike,Male,hAd
+Test,Mike,Male,hYd
+Test,Mike,Male,had
+Test,Mike,Male,hOd
+Test,Mike,Male,hod
+Test,Mike,Male,hUd
+Test,Mike,Male,hud
+Test,Mike,Male,hed
+Test,Mike,Male,hid
+Test,Mike,Male,hId
+Test,Mike,Male,hEd
+Test,Mike,Male,hAd
+Test,Mike,Male,hYd
+Test,Mike,Male,had
+Test,Mike,Male,hOd
+Test,Mike,Male,hod
+Test,Mike,Male,hUd
+Test,Mike,Male,hud
+Test,Mike,Male,hed
+Test,Mike,Male,hid
+Test,Mike,Male,hId
+Test,Mike,Male,hEd
+Test,Mike,Male,hAd
+Test,Mike,Male,hYd
+Test,Mike,Male,had
+Test,Mike,Male,hOd
+Test,Mike,Male,hod
+Test,Mike,Male,hUd
+Test,Mike,Male,hud
+Test,Mike,Male,hed
+Test,Mike,Male,hid
+Test,Mike,Male,hId
+Test,Mike,Male,hEd
+Test,Mike,Male,hAd
+Test,Mike,Male,hYd
+Test,Mike,Male,had
+Test,Mike,Male,hOd
+Test,Mike,Male,hod
+Test,Mike,Male,hUd
+Test,Mike,Male,hud
+Test,Mike,Male,hed
+Test,Mike,Male,hid
+Test,Mike,Male,hId
+Test,Mike,Male,hEd
+Test,Mike,Male,hAd
+Test,Mike,Male,hYd
+Test,Mike,Male,had
+Test,Mike,Male,hOd
+Test,Mike,Male,hod
+Test,Mike,Male,hUd
+Test,Mike,Male,hud
+Test,Mike,Male,hed
+Test,Nick,Male,hid
+Test,Nick,Male,hId
+Test,Nick,Male,hEd
+Test,Nick,Male,hAd
+Test,Nick,Male,hYd
+Test,Nick,Male,had
+Test,Nick,Male,hOd
+Test,Nick,Male,hod
+Test,Nick,Male,hUd
+Test,Nick,Male,hud
+Test,Nick,Male,hed
+Test,Nick,Male,hid
+Test,Nick,Male,hId
+Test,Nick,Male,hEd
+Test,Nick,Male,hAd
+Test,Nick,Male,hYd
+Test,Nick,Male,had
+Test,Nick,Male,hOd
+Test,Nick,Male,hod
+Test,Nick,Male,hUd
+Test,Nick,Male,hud
+Test,Nick,Male,hed
+Test,Nick,Male,hid
+Test,Nick,Male,hId
+Test,Nick,Male,hEd
+Test,Nick,Male,hAd
+Test,Nick,Male,hYd
+Test,Nick,Male,had
+Test,Nick,Male,hOd
+Test,Nick,Male,hod
+Test,Nick,Male,hUd
+Test,Nick,Male,hud
+Test,Nick,Male,hed
+Test,Nick,Male,hid
+Test,Nick,Male,hId
+Test,Nick,Male,hEd
+Test,Nick,Male,hAd
+Test,Nick,Male,hYd
+Test,Nick,Male,had
+Test,Nick,Male,hOd
+Test,Nick,Male,hod
+Test,Nick,Male,hUd
+Test,Nick,Male,hud
+Test,Nick,Male,hed
+Test,Nick,Male,hid
+Test,Nick,Male,hId
+Test,Nick,Male,hEd
+Test,Nick,Male,hAd
+Test,Nick,Male,hYd
+Test,Nick,Male,had
+Test,Nick,Male,hOd
+Test,Nick,Male,hod
+Test,Nick,Male,hUd
+Test,Nick,Male,hud
+Test,Nick,Male,hed
+Test,Nick,Male,hid
+Test,Nick,Male,hId
+Test,Nick,Male,hEd
+Test,Nick,Male,hAd
+Test,Nick,Male,hYd
+Test,Nick,Male,had
+Test,Nick,Male,hOd
+Test,Nick,Male,hod
+Test,Nick,Male,hUd
+Test,Nick,Male,hud
+Test,Nick,Male,hed
+Test,Rich,Male,hid
+Test,Rich,Male,hId
+Test,Rich,Male,hEd
+Test,Rich,Male,hAd
+Test,Rich,Male,hYd
+Test,Rich,Male,had
+Test,Rich,Male,hOd
+Test,Rich,Male,hod
+Test,Rich,Male,hUd
+Test,Rich,Male,hud
+Test,Rich,Male,hed
+Test,Rich,Male,hid
+Test,Rich,Male,hId
+Test,Rich,Male,hEd
+Test,Rich,Male,hAd
+Test,Rich,Male,hYd
+Test,Rich,Male,had
+Test,Rich,Male,hOd
+Test,Rich,Male,hod
+Test,Rich,Male,hUd
+Test,Rich,Male,hud
+Test,Rich,Male,hed
+Test,Rich,Male,hid
+Test,Rich,Male,hId
+Test,Rich,Male,hEd
+Test,Rich,Male,hAd
+Test,Rich,Male,hYd
+Test,Rich,Male,had
+Test,Rich,Male,hOd
+Test,Rich,Male,hod
+Test,Rich,Male,hUd
+Test,Rich,Male,hud
+Test,Rich,Male,hed
+Test,Rich,Male,hid
+Test,Rich,Male,hId
+Test,Rich,Male,hEd
+Test,Rich,Male,hAd
+Test,Rich,Male,hYd
+Test,Rich,Male,had
+Test,Rich,Male,hOd
+Test,Rich,Male,hod
+Test,Rich,Male,hUd
+Test,Rich,Male,hud
+Test,Rich,Male,hed
+Test,Rich,Male,hid
+Test,Rich,Male,hId
+Test,Rich,Male,hEd
+Test,Rich,Male,hAd
+Test,Rich,Male,hYd
+Test,Rich,Male,had
+Test,Rich,Male,hOd
+Test,Rich,Male,hod
+Test,Rich,Male,hUd
+Test,Rich,Male,hud
+Test,Rich,Male,hed
+Test,Rich,Male,hid
+Test,Rich,Male,hId
+Test,Rich,Male,hEd
+Test,Rich,Male,hAd
+Test,Rich,Male,hYd
+Test,Rich,Male,had
+Test,Rich,Male,hOd
+Test,Rich,Male,hod
+Test,Rich,Male,hUd
+Test,Rich,Male,hud
+Test,Rich,Male,hed
+Test,Tim,Male,hid
+Test,Tim,Male,hId
+Test,Tim,Male,hEd
+Test,Tim,Male,hAd
+Test,Tim,Male,hYd
+Test,Tim,Male,had
+Test,Tim,Male,hOd
+Test,Tim,Male,hod
+Test,Tim,Male,hUd
+Test,Tim,Male,hud
+Test,Tim,Male,hed
+Test,Tim,Male,hid
+Test,Tim,Male,hId
+Test,Tim,Male,hEd
+Test,Tim,Male,hAd
+Test,Tim,Male,hYd
+Test,Tim,Male,had
+Test,Tim,Male,hOd
+Test,Tim,Male,hod
+Test,Tim,Male,hUd
+Test,Tim,Male,hud
+Test,Tim,Male,hed
+Test,Tim,Male,hid
+Test,Tim,Male,hId
+Test,Tim,Male,hEd
+Test,Tim,Male,hAd
+Test,Tim,Male,hYd
+Test,Tim,Male,had
+Test,Tim,Male,hOd
+Test,Tim,Male,hod
+Test,Tim,Male,hUd
+Test,Tim,Male,hud
+Test,Tim,Male,hed
+Test,Tim,Male,hid
+Test,Tim,Male,hId
+Test,Tim,Male,hEd
+Test,Tim,Male,hAd
+Test,Tim,Male,hYd
+Test,Tim,Male,had
+Test,Tim,Male,hOd
+Test,Tim,Male,hod
+Test,Tim,Male,hUd
+Test,Tim,Male,hud
+Test,Tim,Male,hed
+Test,Tim,Male,hid
+Test,Tim,Male,hId
+Test,Tim,Male,hEd
+Test,Tim,Male,hAd
+Test,Tim,Male,hYd
+Test,Tim,Male,had
+Test,Tim,Male,hOd
+Test,Tim,Male,hod
+Test,Tim,Male,hUd
+Test,Tim,Male,hud
+Test,Tim,Male,hed
+Test,Tim,Male,hid
+Test,Tim,Male,hId
+Test,Tim,Male,hEd
+Test,Tim,Male,hAd
+Test,Tim,Male,hYd
+Test,Tim,Male,had
+Test,Tim,Male,hOd
+Test,Tim,Male,hod
+Test,Tim,Male,hUd
+Test,Tim,Male,hud
+Test,Tim,Male,hed
+Test,Sarah,Female,hid
+Test,Sarah,Female,hId
+Test,Sarah,Female,hEd
+Test,Sarah,Female,hAd
+Test,Sarah,Female,hYd
+Test,Sarah,Female,had
+Test,Sarah,Female,hOd
+Test,Sarah,Female,hod
+Test,Sarah,Female,hUd
+Test,Sarah,Female,hud
+Test,Sarah,Female,hed
+Test,Sarah,Female,hid
+Test,Sarah,Female,hId
+Test,Sarah,Female,hEd
+Test,Sarah,Female,hAd
+Test,Sarah,Female,hYd
+Test,Sarah,Female,had
+Test,Sarah,Female,hOd
+Test,Sarah,Female,hod
+Test,Sarah,Female,hUd
+Test,Sarah,Female,hud
+Test,Sarah,Female,hed
+Test,Sarah,Female,hid
+Test,Sarah,Female,hId
+Test,Sarah,Female,hEd
+Test,Sarah,Female,hAd
+Test,Sarah,Female,hYd
+Test,Sarah,Female,had
+Test,Sarah,Female,hOd
+Test,Sarah,Female,hod
+Test,Sarah,Female,hUd
+Test,Sarah,Female,hud
+Test,Sarah,Female,hed
+Test,Sarah,Female,hid
+Test,Sarah,Female,hId
+Test,Sarah,Female,hEd
+Test,Sarah,Female,hAd
+Test,Sarah,Female,hYd
+Test,Sarah,Female,had
+Test,Sarah,Female,hOd
+Test,Sarah,Female,hod
+Test,Sarah,Female,hUd
+Test,Sarah,Female,hud
+Test,Sarah,Female,hed
+Test,Sarah,Female,hid
+Test,Sarah,Female,hId
+Test,Sarah,Female,hEd
+Test,Sarah,Female,hAd
+Test,Sarah,Female,hYd
+Test,Sarah,Female,had
+Test,Sarah,Female,hOd
+Test,Sarah,Female,hod
+Test,Sarah,Female,hUd
+Test,Sarah,Female,hud
+Test,Sarah,Female,hed
+Test,Sarah,Female,hid
+Test,Sarah,Female,hId
+Test,Sarah,Female,hEd
+Test,Sarah,Female,hAd
+Test,Sarah,Female,hYd
+Test,Sarah,Female,had
+Test,Sarah,Female,hOd
+Test,Sarah,Female,hod
+Test,Sarah,Female,hUd
+Test,Sarah,Female,hud
+Test,Sarah,Female,hed
+Test,Sue,Female,hid
+Test,Sue,Female,hId
+Test,Sue,Female,hEd
+Test,Sue,Female,hAd
+Test,Sue,Female,hYd
+Test,Sue,Female,had
+Test,Sue,Female,hOd
+Test,Sue,Female,hod
+Test,Sue,Female,hUd
+Test,Sue,Female,hud
+Test,Sue,Female,hed
+Test,Sue,Female,hid
+Test,Sue,Female,hId
+Test,Sue,Female,hEd
+Test,Sue,Female,hAd
+Test,Sue,Female,hYd
+Test,Sue,Female,had
+Test,Sue,Female,hOd
+Test,Sue,Female,hod
+Test,Sue,Female,hUd
+Test,Sue,Female,hud
+Test,Sue,Female,hed
+Test,Sue,Female,hid
+Test,Sue,Female,hId
+Test,Sue,Female,hEd
+Test,Sue,Female,hAd
+Test,Sue,Female,hYd
+Test,Sue,Female,had
+Test,Sue,Female,hOd
+Test,Sue,Female,hod
+Test,Sue,Female,hUd
+Test,Sue,Female,hud
+Test,Sue,Female,hed
+Test,Sue,Female,hid
+Test,Sue,Female,hId
+Test,Sue,Female,hEd
+Test,Sue,Female,hAd
+Test,Sue,Female,hYd
+Test,Sue,Female,had
+Test,Sue,Female,hOd
+Test,Sue,Female,hod
+Test,Sue,Female,hUd
+Test,Sue,Female,hud
+Test,Sue,Female,hed
+Test,Sue,Female,hid
+Test,Sue,Female,hId
+Test,Sue,Female,hEd
+Test,Sue,Female,hAd
+Test,Sue,Female,hYd
+Test,Sue,Female,had
+Test,Sue,Female,hOd
+Test,Sue,Female,hod
+Test,Sue,Female,hUd
+Test,Sue,Female,hud
+Test,Sue,Female,hed
+Test,Sue,Female,hid
+Test,Sue,Female,hId
+Test,Sue,Female,hEd
+Test,Sue,Female,hAd
+Test,Sue,Female,hYd
+Test,Sue,Female,had
+Test,Sue,Female,hOd
+Test,Sue,Female,hod
+Test,Sue,Female,hUd
+Test,Sue,Female,hud
+Test,Sue,Female,hed
+Test,Wendy,Female,hid
+Test,Wendy,Female,hId
+Test,Wendy,Female,hEd
+Test,Wendy,Female,hAd
+Test,Wendy,Female,hYd
+Test,Wendy,Female,had
+Test,Wendy,Female,hOd
+Test,Wendy,Female,hod
+Test,Wendy,Female,hUd
+Test,Wendy,Female,hud
+Test,Wendy,Female,hed
+Test,Wendy,Female,hid
+Test,Wendy,Female,hId
+Test,Wendy,Female,hEd
+Test,Wendy,Female,hAd
+Test,Wendy,Female,hYd
+Test,Wendy,Female,had
+Test,Wendy,Female,hOd
+Test,Wendy,Female,hod
+Test,Wendy,Female,hUd
+Test,Wendy,Female,hud
+Test,Wendy,Female,hed
+Test,Wendy,Female,hid
+Test,Wendy,Female,hId
+Test,Wendy,Female,hEd
+Test,Wendy,Female,hAd
+Test,Wendy,Female,hYd
+Test,Wendy,Female,had
+Test,Wendy,Female,hOd
+Test,Wendy,Female,hod
+Test,Wendy,Female,hUd
+Test,Wendy,Female,hud
+Test,Wendy,Female,hed
+Test,Wendy,Female,hid
+Test,Wendy,Female,hId
+Test,Wendy,Female,hEd
+Test,Wendy,Female,hAd
+Test,Wendy,Female,hYd
+Test,Wendy,Female,had
+Test,Wendy,Female,hOd
+Test,Wendy,Female,hod
+Test,Wendy,Female,hUd
+Test,Wendy,Female,hud
+Test,Wendy,Female,hed
+Test,Wendy,Female,hid
+Test,Wendy,Female,hId
+Test,Wendy,Female,hEd
+Test,Wendy,Female,hAd
+Test,Wendy,Female,hYd
+Test,Wendy,Female,had
+Test,Wendy,Female,hOd
+Test,Wendy,Female,hod
+Test,Wendy,Female,hUd
+Test,Wendy,Female,hud
+Test,Wendy,Female,hed
+Test,Wendy,Female,hid
+Test,Wendy,Female,hId
+Test,Wendy,Female,hEd
+Test,Wendy,Female,hAd
+Test,Wendy,Female,hYd
+Test,Wendy,Female,had
+Test,Wendy,Female,hOd
+Test,Wendy,Female,hod
+Test,Wendy,Female,hUd
+Test,Wendy,Female,hud
+Test,Wendy,Female,hed
